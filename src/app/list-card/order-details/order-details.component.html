@@ -1,0 +1,11 @@
+<mat-list *ngFor="let item of items">
+  <mat-list-item>
+    <div class="list">
+      <mat-icon class="icon">loyalty</mat-icon>
+      <div>
+        <p>{{ item.category }}</p>
+        <p>{{ item.name + ' · $' + item.price }}</p>
+      </div>
+    </div>
+  </mat-list-item>
+</mat-list>

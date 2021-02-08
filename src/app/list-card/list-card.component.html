@@ -1,0 +1,14 @@
+<mat-card class="card">
+  <mat-card-title>{{ '$' + order.totalPrice }}</mat-card-title>
+  <mat-card-subtitle>
+    {{ "By " + order.customerName + " · " + order.email }}
+  </mat-card-subtitle>
+  <mat-card-content>
+    <hr>
+    <app-order-details [items]="order.items"></app-order-details>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="warn" (click)="deleteOrder.emit()">DELETE</button>
+    <button mat-button (click)="editOrder.emit()">EDIT</button>
+  </mat-card-actions>
+</mat-card>

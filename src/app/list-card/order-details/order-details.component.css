@@ -1,0 +1,17 @@
+.list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.icon {
+  align-self: center;
+  margin-right: 20px;
+  font-size: 24pt;
+  align-self: center;
+}
+
+p {
+  font-size: 10pt;
+  line-height: 1ch;
+}

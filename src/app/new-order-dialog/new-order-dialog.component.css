@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 768px;
+}
+
+.item-list {
+  display: flex;;
+  flex-direction: row;
+  justify-content: space-between;
+}

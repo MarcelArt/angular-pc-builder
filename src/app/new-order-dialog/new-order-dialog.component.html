@@ -1,0 +1,44 @@
+<div class="container">
+  <h2>Add New Order</h2>
+  <mat-form-field>
+    <input matInput [(ngModel)]="name" placeholder="Customer name" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="email" placeholder="Email" required>
+  </mat-form-field>
+  <div class="item-list" *ngFor="let item of items">
+    <mat-form-field>
+      <mat-label>Select category</mat-label>
+      <mat-select required [(ngModel)]="item.category">
+        <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Select item</mat-label>
+      <mat-select required *ngIf="!item.category" [disabled]="true"></mat-select>
+      <mat-select required *ngIf="item.category==='CPU'" [(ngModel)]="item.name" (selectionChange)="setCpuPrice(item)">
+        <mat-option *ngFor="let cpu of cpus" [value]="cpu.name">{{ cpu.name }}</mat-option>
+      </mat-select>
+      <mat-select required *ngIf="item.category==='Motherboard'" [(ngModel)]="item.name" (selectionChange)="setMotherboardPrice(item)">
+        <mat-option *ngFor="let motherboard of motherboards" [value]="motherboard.name">{{ motherboard.name }}</mat-option>
+      </mat-select>
+      <mat-select required *ngIf="item.category==='Video Card'" [(ngModel)]="item.name" (selectionChange)="setVideoCardPrice(item)">
+        <mat-option *ngFor="let videoCard of videoCards" [value]="videoCard.name">{{ videoCard.name }}</mat-option>
+      </mat-select>
+      <mat-select required *ngIf="item.category==='Memory'" [(ngModel)]="item.name" (selectionChange)="setMemoryPrice(item)">
+        <mat-option *ngFor="let memory of memories" [value]="memory.name">{{ memory.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <span matPrefix>$</span>
+      <input matInput type="number" [value]="item.price" disabled>
+    </mat-form-field>
+    <button mat-mini-fab color="primary" (click)="addItem()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div style="display: flex; flex-direction: row; align-self: center;">
+    <button mat-raised-button color="warn" style="margin: 10px;" (click)="onCancel()">CANCEL</button>
+    <button mat-raised-button color="primary" style="margin: 10px;" (click)="onSubmit()">SUBMIT</button>
+  </div>
+</div>
